@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block body_block %}
+  <h2>GitHub API : </h2>
+  <hr>
+  <form  method="POST">
+    <input type="text" name="username" value="" required  placeholder="Enter Git username..">
+    {% csrf_token %}
+    <input type="submit" name="submit" value="Get GitHub Info">
+
+  </form>
+  <hr>
+  <hr>
+  {% if user %}
+  <h2>Name : {{ user.name }}</h2>
+  <h4>User name: {{user.login}}</h4>
+  <hr>
+  <h3>GitHub Link : <a href="{{user.html_url}}">{{user.html_url}}</a></h3>
+  <hr>
+  <h4>Public Repos : {{user.public_repos}}</h4>
+  <h4>Following : {{user.following}}</h4>
+  <h4>Followers : {{user.followers}}</h4>
+  <hr>
+
+  {% endif %}
+
+{% endblock %}
